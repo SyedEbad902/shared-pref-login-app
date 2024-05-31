@@ -3,6 +3,7 @@ import 'package:local_storage_app/screens/home.dart';
 import 'package:local_storage_app/screens/splash.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// ignore: must_be_immutable
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
   final _formKey = GlobalKey<FormState>();
@@ -13,8 +14,9 @@ class LoginPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Login Page"),
+          title: Text("Login Page",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w700),),
           backgroundColor: Color.fromRGBO(83, 177, 117, 5),
+          toolbarHeight: 60,
         ),
         body: SingleChildScrollView(
           child: Form(
@@ -68,10 +70,12 @@ class LoginPage extends StatelessWidget {
                           if (_formKey.currentState!.validate()) {
                             // Navigate the user to the Home page
                             Navigator.pushReplacement(
+                                // ignore: use_build_context_synchronously
                                 context,
                                 MaterialPageRoute(
                                     builder: ((context) => Homescreen())));
                           } else {
+                            // ignore: use_build_context_synchronously
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                   content: Text('Please fill input')),
